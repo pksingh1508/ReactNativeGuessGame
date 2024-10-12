@@ -1,22 +1,33 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import Title from "../components/Title";
 import PrimaryButton from "../components/PrimaryButton";
 
 
 function GameOverScreen({ totalGuess, userNumber, onPress }) {
-    return (
-        <View style={styles.rootContainer}>
-            <Title>GAME OVER!</Title>
-            <View style={styles.imageContainer}>
-                <Image
-                    source={require('../assets/success.png')}
-                />
-            </View>
-            <Text style={styles.countText}>Your Phone needed <Text style={styles.mainCountValue}>{totalGuess}</Text> rounds to guess the number <Text style={styles.mainCountValue}>{userNumber}</Text>
-            </Text>
 
-            <View style={styles.newGameBtnContainer}>
-                <PrimaryButton onPress={onPress}>Start New Game</PrimaryButton>
+    const { width, height } = useWindowDimensions();
+
+    const direction = width < 500 ? 'column' : 'row';
+    const marginFromTop = height < 422 ? 30 : 100;
+    const boxWidth = width < 500 ? "100%" : '40%'
+
+    return (
+        <View style={[styles.rootContainer, { marginTop: marginFromTop, flexDirection: direction, gap: 20 }]}>
+            <View>
+                <Title>GAME OVER!</Title>
+                <View style={[styles.imageContainer]}>
+                    <Image
+                        source={require('../assets/success.png')}
+                    />
+                </View>
+            </View>
+            <View style={[{ width: boxWidth }]}>
+                <Text style={styles.countText}>Your Phone needed <Text style={styles.mainCountValue}>{totalGuess}</Text> rounds to guess the number <Text style={styles.mainCountValue}>{userNumber}</Text>
+                </Text>
+
+                <View style={styles.newGameBtnContainer}>
+                    <PrimaryButton onPress={onPress}>Start New Game</PrimaryButton>
+                </View>
             </View>
 
         </View>

@@ -3,11 +3,11 @@
     "name": "guessGame",
     "slug": "guessGame",
     "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "orientation": "default",
+    "icon": "./assets/whip.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/whip.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
